@@ -41,14 +41,23 @@ library(stringr)
 vartext<-paste(formula)
 split<-strsplit(vartext,"-")#separate words of variable names
 
-#gets the numbers of the variables with the word "mean()"
+#gets the numbers of the variables with the word "mean()" or "std()"
 goodvars<-data.frame()
+m<-"mean()"
+s<-"std()"
 for (i in 1:length(split)){ 
-        if(any(split[[i]]=="mean()")){
+        if(any(split[[i]]==m)){
                 good<-data.frame(i)
                 goodvars<-rbind(goodvars,good)
+        
         }
+        else if(any(split[[i]]==s)){
+                        good<-data.frame(i)
+                        goodvars<-rbind(goodvars,good)
+         
+        }        
         
 }
+
 #extract only the variables with mean()
 extractedtable<-onetable[,c(goodvars$i,onetable$activity,onetable$subject)]
