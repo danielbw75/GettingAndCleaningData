@@ -4,8 +4,8 @@
 
 features<-read.table("Courseproject/features.txt", col.names=c("vector", "formula"))
 activitylabels<-read.table("Courseproject/activity_labels.txt", row.names=c("1","2","3","4","5","6"), col.names=c("label", "activity"))
-#select the Formulas used in Features and the Activity used in activity_labels
-#to name the test/train columns and better see the data instead of numbers
+#select the Formulas used in Features to name the test/train columns
+# and better see the data instead of numbers
 
 
 formula<-features[,"formula"]
@@ -14,6 +14,7 @@ formula<-features[,"formula"]
 Xtest<-read.table("Courseproject/test/X_test.txt", col.names=formula)
 Ytest<-read.table("Courseproject/test/Y_test.txt")
 Subtest<-read.table("Courseproject/test/subject_test.txt", col.names="subject")
+
 #open train files
 Xtrain<-read.table("Courseproject/train/X_train.txt", col.names=formula)
 Ytrain<-read.table("Courseproject/train/Y_train.txt")
@@ -31,9 +32,6 @@ for(i in 1:nrow(Ytotal)){
         activities<-rbind(activities,lista)
         
 }
-
-#join all tables in one
-onetable<-cbind(Xtotal,activities,Subtotal)
 
 #find variables with mean ()
 #IMPORTANT: library(stringr)
@@ -59,5 +57,6 @@ for (i in 1:length(split)){
         
 }
 
-#extract only the variables with mean()
-extractedtable<-onetable[,c(goodvars$i,onetable$activity,onetable$subject)]
+#extract only the variables with mean() and std()
+extractedX<-Xtotal[,c(goodvars$i)]
+extractedraw<-cbind(extractedX,Ytotal,Subtotal)
