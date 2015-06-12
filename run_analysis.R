@@ -1,5 +1,5 @@
 #Getting-and-Cleaning-data Course Project
-
+library(stringr)
 #open the Features and activity_labels data
 
 features<-read.table("Courseproject/features.txt", col.names=c("vector", "formula"))
@@ -26,16 +26,16 @@ Ytotal<-rbind(Ytest, Ytrain)
 Subtotal<-rbind(Subtest, Subtrain)
 
 #parse the activity label with its code
-activities<-data.frame()
+activities1<-data.frame()
 for(i in 1:nrow(Ytotal)){
         lista<-activitylabels[activitylabels$label==Ytotal[i,],]
-        activities<-rbind(activities,lista)
+        activities1<-rbind(activities1,lista)
         
 }
-
+activities<-activities1[,"activity"]
 #find variables with mean ()
 #IMPORTANT: library(stringr)
-library(stringr)
+
 vartext<-paste(formula)
 split<-strsplit(vartext,"-")#separate words of variable names
 
@@ -59,4 +59,5 @@ for (i in 1:length(split)){
 
 #extract only the variables with mean() and std()
 extractedX<-Xtotal[,c(goodvars$i)]
-extractedraw<-cbind(extractedX,Ytotal,Subtotal)
+extractedraw<-cbind(activities,extractedX,Subtotal)
+#extract the mean of variables for each activity and person
