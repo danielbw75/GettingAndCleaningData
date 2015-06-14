@@ -96,5 +96,5 @@ colnames(namesrow)<-"index"
 #sets the index
 tidy_data<-cbind(namesrow,media3)
 #final tidy data
-
-#sets the columns names by variables
+##The step 4 for labeled dataset is the object named extractedraw
+##The step 5 for the tidy data is the object named tidy_data
