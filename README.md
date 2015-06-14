@@ -23,3 +23,6 @@
 ###.
 ###.
 ###.
+
+#The step 4 for labeled dataset is the object named extractedraw
+#The step 5 for the tidy_data is the object name tidy_data
