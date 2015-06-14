@@ -4,8 +4,8 @@ library(stringr)
 
 #PLEASE MAKE SURE YOU DID NOT RENAME THE SAMSUNG DATA FOLDER AND IT IS IN
 #YOUR WORKIND DIRECTORY
-features<-read.table(paste(getwd(),"UCI%HAR%Dataset/features.txt",sep=""), col.names=c("vector", "formula"))
-activitylabels<-read.table(paste(getwd(),"UCI%HAR%Dataset/activity_labels.txt",sep=""), row.names=c("1","2","3","4","5","6"), col.names=c("label", "activity"))
+features<-read.table(paste(getwd(),"/UCI HAR Dataset/features.txt",sep=""), col.names=c("vector", "formula"))
+activitylabels<-read.table(paste(getwd(),"/UCI HAR Dataset/activity_labels.txt",sep=""), row.names=c("1","2","3","4","5","6"), col.names=c("label", "activity"))
 #select the Formulas used in Features to name the test/train columns
 # and better see the data instead of numbers
 
@@ -14,15 +14,15 @@ formula<-features[,"formula"]
 
 #PLEASE MAKE SURE YOU DID NOT RENAME THE SAMSUNG DATA FOLDER AND IT IS IN
 #YOUR WORKIND DIRECTORY
-Xtest<-read.table(paste(getwd(),"UCI%HAR%Dataset/test/X_test.txt",sep=""), col.names=formula)
-Ytest<-read.table(paste(getwd(),"UCI%HAR%Dataset/test/Y_test.txt",sep=""))
-Subtest<-read.table(paste(getwd(),"UCI%HAR%Dataset/test/subject_test.txt",sep=""), col.names="subject")
+Xtest<-read.table(paste(getwd(),"/UCI HAR Dataset/test/X_test.txt",sep=""), col.names=formula)
+Ytest<-read.table(paste(getwd(),"/UCI HAR Dataset/test/Y_test.txt",sep=""))
+Subtest<-read.table(paste(getwd(),"/UCI HAR Dataset/test/subject_test.txt",sep=""), col.names="subject")
 
 #PLEASE MAKE SURE YOU DID NOT RENAME THE SAMSUNG DATA FOLDER AND IT IS IN
 #YOUR WORKIND DIRECTORY
-Xtrain<-read.table(paste(getwd(),"UCI%HAR%Dataset/train/X_train.txt",sep=""), col.names=formula)
-Ytrain<-read.table(paste(getwd(),"UCI%HAR%Dataset/train/Y_train.txt",sep=""))
-Subtrain<-read.table(paste(getwd(),"UCI%HAR%Dataset/train/subject_train.txt",sep=""), col.names="subject")
+Xtrain<-read.table(paste(getwd(),"/UCI HAR Dataset/train/X_train.txt",sep=""), col.names=formula)
+Ytrain<-read.table(paste(getwd(),"/UCI HAR Dataset/train/Y_train.txt",sep=""))
+Subtrain<-read.table(paste(getwd(),"/UCI HAR Dataset/train/subject_train.txt",sep=""), col.names="subject")
 
 #join tables
 Xtotal<-rbind(Xtest, Xtrain)
